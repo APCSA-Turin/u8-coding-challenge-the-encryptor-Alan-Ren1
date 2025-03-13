@@ -5,20 +5,17 @@ import java.util.Arrays;
 
 public class Encryptor {
 
-    /**
-     * Determines the number of columns required for the 2D array based on the message length and rows.
-     *
-     * @param messageLen The length of the message.
-     * @param rows       The number of rows in the 2D array.
-     * @return The number of columns required.
-     */
     public static int determineColumns(int messageLen, int rows) {
         if (messageLen == 0) {
             return 1; 
         }
-        return (int) Math.ceil((double) messageLen / rows); 
+       for (int i = 0; i <= messageLen; i++) { 
+        if (i * rows >= messageLen) {
+            return i;
+        }
+       }
+       return 0;
     }
-
 
     public static String[][] generateEncryptArray(String message, int rows) {
         int messageLen = message.length();
